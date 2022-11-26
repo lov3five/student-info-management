@@ -23,7 +23,7 @@ function App() {
         <Sidebar />
         <Monitor />
       </Stack>
-      <Footer />
+      <Footer sx={{marginTop: "10px", backgroundColor: "aqua"}}/>
     </Box>
   )
 }
