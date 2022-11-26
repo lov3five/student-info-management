@@ -1,26 +1,42 @@
-import React, { useState } from 'react'
-import Typography from '@mui/material/Typography'
-import AppBar from '@mui/material/AppBar'
-import Toolbar from '@mui/material/Toolbar'
-import { Box, Badge, styled, Avatar, Menu, MenuItem, IconButton, Tooltip, Divider, ListItemIcon } from '@mui/material'
+import React, { useState } from "react";
+import Typography from "@mui/material/Typography";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import {
+    Box,
+    Badge,
+    styled,
+    Avatar,
+    Menu,
+    MenuItem,
+    IconButton,
+    Tooltip,
+    Divider,
+    ListItemIcon,
+} from "@mui/material";
 
 //Icon
-import { Home, Logout, Mail, Notifications, PersonAdd, Settings } from '@mui/icons-material'
+import {
+    Home,
+    Logout,
+    Mail,
+    Notifications,
+    PersonAdd,
+    Settings,
+} from "@mui/icons-material";
 
-import logo from "./vscode.png"
+import logo from "./vscode.png";
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
     display: "flex",
-    justifyContent: "space-between"
-}))
+    justifyContent: "space-between",
+}));
 
 const Icons = styled(Box)(({ theme }) => ({
     display: "flex",
     gap: "12px",
-    alignItems: 'center'
-}))
-
-
+    alignItems: "center",
+}));
 
 const Header = () => {
     const [anchorEl, setAnchorEl] = useState(null);
@@ -34,40 +50,62 @@ const Header = () => {
 
     return (
         <Box>
-            <AppBar position="sticky" sx={{ background: "linear-gradient(45deg, #007FFF, #0059D2)" }}>
-                <StyledToolbar >
-                    <img src={logo} alt="VSCode" style={{
-                        maxWidth: 40,
-                    }} />
-                    <Typography variant="h5" sx={{ padding: "0px 20px 0px 20px", display: { xs: "none", sm: "block" } }} >
+            <AppBar
+                position="sticky"
+                sx={{ background: "linear-gradient(45deg, #007FFF, #0059D2)" }}
+            >
+                <StyledToolbar>
+                    <img
+                        src={logo}
+                        alt="VSCode"
+                        style={{
+                            maxWidth: 40,
+                        }}
+                    />
+                    <Typography
+                        variant="h5"
+                        sx={{
+                            padding: "0px 20px 0px 20px",
+                            display: { xs: "none", sm: "block" },
+                        }}
+                    >
                         Student Infomation Managerment
                     </Typography>
-                    <Typography variant="h5" sx={{ padding: "0px 20px 0px 20px", display: { xs: "block", sm: "none" } }} >
+                    <Typography
+                        variant="h5"
+                        sx={{
+                            padding: "0px 20px 0px 20px",
+                            display: { xs: "block", sm: "none" },
+                        }}
+                    >
                         S-I-M
                     </Typography>
                     <Icons>
-                        <IconButton>
-                            <Home sx={{color: "white"}}/>
+                        <IconButton color="inherit">
+                            <Home sx={{ color: "white" }} />
                         </IconButton>
-                        <IconButton>
+                        <IconButton color="inherit">
                             <Badge badgeContent={100} color="error">
-                                <Mail sx={{color: "white"}}/>
+                                <Mail sx={{ color: "white" }} />
                             </Badge>
                         </IconButton>
-                        <IconButton>
+                        <IconButton color="inherit">
                             <Badge badgeContent={4} color="error">
-                                <Notifications sx={{color: "white"}}/>
+                                <Notifications sx={{ color: "white" }} />
                             </Badge>
                         </IconButton>
                         <Tooltip title="Account settings">
                             <IconButton
                                 id="basic-button"
-                                aria-controls={open ? 'basic-menu' : undefined}
+                                aria-controls={open ? "basic-menu" : undefined}
                                 aria-haspopup="true"
-                                aria-expanded={open ? 'true' : undefined}
+                                aria-expanded={open ? "true" : undefined}
                                 onClick={handleClick}
                             >
-                                <Avatar sx={{width: 32, height: 32}} src='https://avatars.githubusercontent.com/u/67590509?v=4' />
+                                <Avatar
+                                    sx={{ width: 32, height: 32 }}
+                                    src="https://avatars.githubusercontent.com/u/67590509?v=4"
+                                />
                             </IconButton>
                         </Tooltip>
                     </Icons>
@@ -80,34 +118,35 @@ const Header = () => {
                     PaperProps={{
                         elevation: 0,
                         sx: {
-                            overflow: 'visible',
-                            filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+                            overflow: "visible",
+                            filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
                             mt: 1.5,
-                            '& .MuiAvatar-root': {
+                            "& .MuiAvatar-root": {
                                 width: 32,
                                 height: 32,
                                 ml: -0.5,
                                 mr: 1,
                             },
-                            '&:before': {
+                            "&:before": {
                                 content: '""',
-                                display: 'block',
-                                position: 'absolute',
+                                display: "block",
+                                position: "absolute",
                                 top: 0,
                                 right: 14,
                                 width: 10,
                                 height: 10,
-                                bgcolor: 'background.paper',
-                                transform: 'translateY(-50%) rotate(45deg)',
+                                bgcolor: "background.paper",
+                                transform: "translateY(-50%) rotate(45deg)",
                                 zIndex: 0,
                             },
                         },
                     }}
-                    transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-                    anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+                    transformOrigin={{ horizontal: "right", vertical: "top" }}
+                    anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
                 >
                     <MenuItem>
-                    <Avatar src='https://avatars.githubusercontent.com/u/67590509?v=4' /> Naker Master
+                        <Avatar src="https://avatars.githubusercontent.com/u/67590509?v=4" />{" "}
+                        Naker Master
                     </MenuItem>
                     <Divider />
                     <MenuItem>
@@ -130,8 +169,8 @@ const Header = () => {
                     </MenuItem>
                 </Menu>
             </AppBar>
-        </Box >
-    )
-}
+        </Box>
+    );
+};
 
-export default Header
+export default Header;
