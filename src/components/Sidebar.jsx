@@ -1,10 +1,47 @@
-import React from 'react'
-import Typography from '@mui/material/Typography'
+import React from "react";
+
+import { Box, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import { BarChart, Layers, People } from "@mui/icons-material";
 
 const Sidebar = () => {
   return (
-    <Typography variant="h5" flex={1} bgcolor="green" sx={{ display: { xs: "none", md: "block" } }}>Sidebar</Typography>
-  )
-}
+    <Box
+      sx={{
+        display: { xs: "none", sm: "block" },
+        flex: {
+          xs: 0,
+          sm: 1,
+          md: 1,
+        },
+      }}
+    >
+      <ListItemButton>
+        <ListItemIcon>
+          <DashboardIcon />
+        </ListItemIcon>
+        <ListItemText primary="Dashboard" />
+      </ListItemButton>
+      <ListItemButton>
+        <ListItemIcon>
+          <People/>
+        </ListItemIcon>
+        <ListItemText primary="Students" />
+      </ListItemButton>
+      <ListItemButton>
+        <ListItemIcon>
+          <BarChart/>
+        </ListItemIcon>
+        <ListItemText primary="Reports" />
+      </ListItemButton>
+      <ListItemButton>
+        <ListItemIcon>
+          <Layers />
+        </ListItemIcon>
+        <ListItemText primary="Integrations" />
+      </ListItemButton>
+    </Box>
+  );
+};
 
-export default Sidebar
+export default Sidebar;

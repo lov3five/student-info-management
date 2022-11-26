@@ -1,13 +1,11 @@
-import Typography from '@mui/material/Typography'
-import { Box } from '@mui/system'
-
+import React from 'react'
+import Copyright from './Copyright'
 
 const Footer = () => {
   return (
-    <Box >
-      <Typography variant="p" bgcolor="cyan">Copyright <code>&#169;</code> 2022. All rights reserved</Typography>
-      <Typography variant="p">Design by Naker</Typography>
-    </Box>
+    <>
+        <Copyright >L-3012</Copyright>
+    </>
   )
 }
 
