@@ -96,6 +96,7 @@ const Header = () => {
                         </IconButton>
                         <Tooltip title="Account settings">
                             <IconButton
+                                color="inherit"
                                 id="basic-button"
                                 aria-controls={open ? "basic-menu" : undefined}
                                 aria-haspopup="true"
