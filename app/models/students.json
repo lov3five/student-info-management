@@ -1,0 +1,104 @@
+{
+    "students": [
+        {
+            "id": 1,
+            "firstName": "John",
+            "lastName": "Doe",
+            "avatar": "https://cdn-icons-png.flaticon.com/128/2202/2202112.png",
+            "email": "jd@gmail.com",
+            "gender": "Male",
+            "address": "1234 Main St",
+            "city": "New York"
+        },
+        {
+            "id": 2,
+            "firstName": "Jan",
+            "lastName": "Dore",
+            "avatar": "https://cdn-icons-png.flaticon.com/128/4333/4333609.png",
+            "email": "jdore@gmail.com",
+            "gender": "Male",
+            "address": "121 Main St",
+            "city": "London"
+        },
+        {
+            "id": 3,
+            "firstName": "John",
+            "lastName": "Doe",
+            "avatar": "https://cdn-icons-png.flaticon.com/128/4333/4333609.png",
+            "email": "jd@gmail.com",
+            "gender": "Male",
+            "address": "1234 Main St",
+            "city": "Tokyo"
+        },
+        {
+            "id": 4,
+            "firstName": "John",
+            "lastName": "Doe",
+            "avatar": "https://cdn-icons-png.flaticon.com/128/4333/4333609.png",
+            "email": "jd@gmail.com",
+            "gender": "Male",
+            "address": "1234 Main St",
+            "city": "New York"
+        },
+        {
+            "id": 5,
+            "firstName": "John",
+            "lastName": "Doe",
+            "avatar": "https://cdn-icons-png.flaticon.com/128/4333/4333609.png",
+            "email": "jd@gmail.com",
+            "gender": "Male",
+            "address": "1234 Main St",
+            "city": "New York"
+        },
+        {
+            "id": 6,
+            "firstName": "John",
+            "lastName": "Doe",
+            "avatar": "https://cdn-icons-png.flaticon.com/128/4333/4333609.png",
+            "email": "jd@gmail.com",
+            "gender": "Male",
+            "address": "1234 Main St",
+            "city": "New York"
+        },
+        {
+            "id": 7,
+            "firstName": "John",
+            "lastName": "Doe",
+            "avatar": "https://cdn-icons-png.flaticon.com/128/4333/4333609.png",
+            "email": "jd@gmail.com",
+            "gender": "Male",
+            "address": "1234 Main St",
+            "city": "New York"
+        },
+        {
+            "id": 8,
+            "firstName": "John",
+            "lastName": "Doe",
+            "avatar": "https://cdn-icons-png.flaticon.com/128/4333/4333609.png",
+            "email": "jd@gmail.com",
+            "gender": "Male",
+            "address": "1234 Main St",
+            "city": "New York"
+        },
+        {
+            "id": 9,
+            "firstName": "John",
+            "lastName": "Doe",
+            "avatar": "https://cdn-icons-png.flaticon.com/128/4333/4333609.png",
+            "email": "jd@gmail.com",
+            "gender": "Male",
+            "address": "1234 Main St",
+            "city": "New York"
+        }
+        ,{
+            "id": 10,
+            "firstName": "John",
+            "lastName": "Doe",
+            "avatar": "https://cdn-icons-png.flaticon.com/128/4333/4333609.png",
+            "email": "jd@gmail.com",
+            "gender": "Male",
+            "address": "1234 Main St",
+            "city": "New York"
+        }
+    ]
+}
