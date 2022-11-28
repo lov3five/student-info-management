@@ -5,6 +5,7 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import { BarChart, Layers, People } from "@mui/icons-material";
 
 const Sidebar = () => {
+
   return (
     <Box
       sx={{
@@ -16,25 +17,25 @@ const Sidebar = () => {
         },
       }}
     >
-      <ListItemButton>
+      <ListItemButton sx={{ borderRadius: "10px" }} >
         <ListItemIcon>
           <DashboardIcon />
         </ListItemIcon>
         <ListItemText primary="Dashboard" />
       </ListItemButton>
-      <ListItemButton>
+      <ListItemButton sx={{ borderRadius: "10px" }} >
         <ListItemIcon>
-          <People/>
+          <People />
         </ListItemIcon>
         <ListItemText primary="Students" />
       </ListItemButton>
-      <ListItemButton>
+      <ListItemButton sx={{ borderRadius: "10px" }} >
         <ListItemIcon>
-          <BarChart/>
+          <BarChart />
         </ListItemIcon>
         <ListItemText primary="Reports" />
       </ListItemButton>
-      <ListItemButton>
+      <ListItemButton sx={{ borderRadius: "10px" }} >
         <ListItemIcon>
           <Layers />
         </ListItemIcon>
