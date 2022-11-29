@@ -1,6 +1,8 @@
-import React from "react";
 import PropTypes from 'prop-types';
-import { Box, Checkbox, TableCell, TableHead, TableRow, TableSortLabel } from "@mui/material";
+// @mui
+import { Box, Checkbox, TableRow, TableCell, TableHead, TableSortLabel } from '@mui/material';
+
+// ----------------------------------------------------------------------
 
 const visuallyHidden = {
     border: 0,
@@ -14,18 +16,29 @@ const visuallyHidden = {
     clip: 'rect(0 0 0 0)',
 };
 
-const StudentListHeader = (props) => {
-    const {
-        order,
-        orderBy,
-        rowCount,
-        headLabel,
-        numSelected,
-        onRequestSort,
-        onSelectAllClick } = props;
+StudentListHeader.propTypes = {
+    order: PropTypes.oneOf(['asc', 'desc']),
+    orderBy: PropTypes.string,
+    rowCount: PropTypes.number,
+    headLabel: PropTypes.array,
+    numSelected: PropTypes.number,
+    onRequestSort: PropTypes.func,
+    onSelectAllClick: PropTypes.func,
+};
+
+export default function StudentListHeader({
+    order,
+    orderBy,
+    rowCount,
+    headLabel,
+    numSelected,
+    onRequestSort,
+    onSelectAllClick,
+}) {
     const createSortHandler = (property) => (event) => {
         onRequestSort(event, property);
     };
+
     return (
         <TableHead>
             <TableRow>
@@ -39,8 +52,7 @@ const StudentListHeader = (props) => {
                 {headLabel.map((headCell) => (
                     <TableCell
                         key={headCell.id}
-                        align={headCell.numeric ? 'right' : 'left'}
-                        padding={headCell.disablePadding ? 'none' : 'normal'}
+                        align={headCell.alignRight ? 'right' : 'left'}
                         sortDirection={orderBy === headCell.id ? order : false}
                     >
                         <TableSortLabel
@@ -59,16 +71,4 @@ const StudentListHeader = (props) => {
             </TableRow>
         </TableHead>
     );
-};
-
-StudentListHeader.propTypes = {
-    order: PropTypes.oneOf(['asc', 'desc']),
-    orderBy: PropTypes.string,
-    rowCount: PropTypes.number,
-    headLabel: PropTypes.array,
-    numSelected: PropTypes.number,
-    onRequestSort: PropTypes.func,
-    onSelectAllClick: PropTypes.func,
-};
-
-export default StudentListHeader;
+}

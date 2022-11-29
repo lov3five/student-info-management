@@ -1,4 +1,6 @@
 //@MUI
+
+import PropTypes from 'prop-types';
 import { Delete, FilterList, Search } from '@mui/icons-material';
 import { Toolbar, Tooltip, IconButton, Typography, OutlinedInput, InputAdornment } from '@mui/material';
 import { styled, alpha } from '@mui/material/styles';
@@ -25,6 +27,8 @@ const SearchStyled = styled(OutlinedInput)(({ theme }) => ({
         borderColor: `${alpha(theme.palette.grey[500], 0.32)} !important`,
     },
 }));
+
+
 
 
 const StudentListToolbar = ({ numSelected, filterName, onFilterName }) => {
@@ -71,6 +75,12 @@ const StudentListToolbar = ({ numSelected, filterName, onFilterName }) => {
         </ToolbarStyled>
     )
 }
+
+StudentListToolbar.propTypes = {
+    numSelected: PropTypes.number,
+    filterName: PropTypes.string,
+    onFilterName: PropTypes.func,
+};
 
 export default StudentListToolbar
 
