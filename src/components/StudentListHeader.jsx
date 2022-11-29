@@ -1,8 +1,6 @@
-import { CheckBox } from '@mui/icons-material'
-import {
-    TableCell, TableHead, TableRow, Checkbox, Table, TableContainer, TableSortLabel, Box
-} from '@mui/material'
-import React from 'react'
+import React from "react";
+import PropTypes from 'prop-types';
+import { Box, Checkbox, TableCell, TableHead, TableRow, TableSortLabel } from "@mui/material";
 
 const visuallyHidden = {
     border: 0,
@@ -16,32 +14,61 @@ const visuallyHidden = {
     clip: 'rect(0 0 0 0)',
 };
 
-const StudentListHeader = () => {
-
+const StudentListHeader = (props) => {
+    const {
+        order,
+        orderBy,
+        rowCount,
+        headLabel,
+        numSelected,
+        onRequestSort,
+        onSelectAllClick } = props;
+    const createSortHandler = (property) => (event) => {
+        onRequestSort(event, property);
+    };
     return (
-        <TableContainer>
-            <Table>
-                <TableHead>
-                    <TableRow>
-                        <TableCell padding="checkbox">
-                            <Checkbox
-
-                            />
-                        </TableCell>
-
-                        <TableCell
-                            key={1}
+        <TableHead>
+            <TableRow>
+                <TableCell padding="checkbox">
+                    <Checkbox
+                        indeterminate={numSelected > 0 && numSelected < rowCount}
+                        checked={rowCount > 0 && numSelected === rowCount}
+                        onChange={onSelectAllClick}
+                    />
+                </TableCell>
+                {headLabel.map((headCell) => (
+                    <TableCell
+                        key={headCell.id}
+                        align={headCell.numeric ? 'right' : 'left'}
+                        padding={headCell.disablePadding ? 'none' : 'normal'}
+                        sortDirection={orderBy === headCell.id ? order : false}
+                    >
+                        <TableSortLabel
+                            hideSortIcon
+                            active={orderBy === headCell.id}
+                            direction={orderBy === headCell.id ? order : 'asc'}
+                            onClick={createSortHandler(headCell.id)}
                         >
-                            <TableSortLabel
-                            >
-                                #
-                            </TableSortLabel>
-                        </TableCell>
-                    </TableRow>
-                </TableHead>
-            </Table>
-        </TableContainer>
-    )
-}
+                            {headCell.label}
+                            {orderBy === headCell.id ? (
+                                <Box sx={{ ...visuallyHidden }}>{order === 'desc' ? 'sorted descending' : 'sorted ascending'}</Box>
+                            ) : null}
+                        </TableSortLabel>
+                    </TableCell>
+                ))}
+            </TableRow>
+        </TableHead>
+    );
+};
 
-export default StudentListHeader
+StudentListHeader.propTypes = {
+    order: PropTypes.oneOf(['asc', 'desc']),
+    orderBy: PropTypes.string,
+    rowCount: PropTypes.number,
+    headLabel: PropTypes.array,
+    numSelected: PropTypes.number,
+    onRequestSort: PropTypes.func,
+    onSelectAllClick: PropTypes.func,
+};
+
+export default StudentListHeader;
