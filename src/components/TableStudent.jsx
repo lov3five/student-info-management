@@ -14,9 +14,9 @@ import StudentTableHead from './StudentTableHead';
 import STUDENT_LIST from '../_mock/student';
 import { Avatar, Button, Checkbox, Container, Paper, Stack, Typography } from "@mui/material";
 import { Add } from "@mui/icons-material";
+import { filter } from 'lodash'
 
 
-const rows = STUDENT_LIST;
 
 function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
@@ -36,7 +36,7 @@ function getComparator(order, orderBy) {
 
 // This method is created for cross-browser compatibility, if you don't
 // need to support IE11, you can use Array.prototype.sort() directly
-function stableSort(array, comparator) {
+function stableSort(array, comparator, query) {
     const stabilizedThis = array.map((el, index) => [el, index]);
     stabilizedThis.sort((a, b) => {
         const order = comparator(a[0], b[0]);
@@ -45,6 +45,10 @@ function stableSort(array, comparator) {
         }
         return a[1] - b[1];
     });
+
+    if (query) {
+        return filter(array, (_user) => _user.name.toLowerCase().indexOf(query.toLowerCase()) !== -1);
+    }
     return stabilizedThis.map((el) => el[0]);
 }
 
@@ -65,7 +69,7 @@ export default function StudentTable() {
 
     const handleSelectAllClick = (event) => {
         if (event.target.checked) {
-            const newSelected = rows.map((n) => n.id);
+            const newSelected = STUDENT_LIST.map((n) => n.id);
             setSelected(newSelected);
             return;
         }
@@ -104,14 +108,14 @@ export default function StudentTable() {
     const handleFilterByName = (event) => {
         setPage(0);
         setFilterName(event.target.value);
-    }
+    };
 
 
     const isSelected = (name) => selected.indexOf(name) !== -1;
 
     // Avoid a layout jump when reaching the last page with empty rows.
     const emptyRows =
-        page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
+        page > 0 ? Math.max(0, (1 + page) * rowsPerPage - STUDENT_LIST.length) : 0;
 
     const filteredStudents = stableSort(STUDENT_LIST, getComparator(order, orderBy), filterName);
 
@@ -143,12 +147,12 @@ export default function StudentTable() {
                                 orderBy={orderBy}
                                 onSelectAllClick={handleSelectAllClick}
                                 onRequestSort={handleRequestSort}
-                                rowCount={rows.length}
+                                rowCount={STUDENT_LIST.length}
                             />
                             <TableBody>
                                 {/* if you don't need to support IE11, you can replace the `stableSort` call with:
                  rows.sort(getComparator(order, orderBy)).slice() */}
-                                {stableSort(rows, getComparator(order, orderBy))
+                                {stableSort(STUDENT_LIST, getComparator(order, orderBy), filterName)
                                     .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                                     .map((row, index) => {
                                         const { id, avatarUrl, name, email } = row;
@@ -201,34 +205,31 @@ export default function StudentTable() {
                             </TableBody>
 
                             {isNotFound && (
+
                                 <TableBody>
                                     <TableRow>
                                         <TableCell align="center" colSpan={6} sx={{ py: 3 }}>
-                                            <Paper
-                                                sx={{
-                                                    textAlign: 'center',
-                                                }}
-                                            >
-                                                <Typography variant="h6" paragraph>
-                                                    Not found
-                                                </Typography>
 
-                                                <Typography variant="body2">
-                                                    No results found for &nbsp;
-                                                    <strong>&quot;{filterName}&quot;</strong>.
-                                                    <br /> Try checking for typos or using complete words.
-                                                </Typography>
-                                            </Paper>
+                                            <Typography variant="h6" paragraph>
+                                                Not found
+                                            </Typography>
+                                            <Typography variant="body2">
+                                                No results found for &nbsp;
+                                                <strong>&quot;{filterName}&quot;</strong>.
+                                                <br /> Try checking for typos or using complete words.
+                                            </Typography>
+
                                         </TableCell>
                                     </TableRow>
                                 </TableBody>
+
                             )}
                         </Table>
                     </TableContainer>
                     <TablePagination
                         rowsPerPageOptions={[5, 10, 25]}
                         component="div"
-                        count={rows.length}
+                        count={STUDENT_LIST.length}
                         rowsPerPage={rowsPerPage}
                         page={page}
                         onPageChange={handleChangePage}
