@@ -41,7 +41,7 @@ const getUsers = async (req, res) => {
             users.push(formatInfo(item));
         }
     }
-    res.json(users);
+    res.status(200).json(users);
 };
 
 
