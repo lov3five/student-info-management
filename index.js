@@ -32,10 +32,10 @@ app.use(express.static("public", {
 /* app.set('view engine', 'ejs') */
 
 app.get('/', (req, res) => {
-    res.send('Welcome to Naker UI');
+    res.send('Welcome to Naker UI ^^');
 });
 
-// Router
+// Router hh
 const userRouter = require('./app/routes/user');
 const authRouter = require('./app/routes/auth');
 
