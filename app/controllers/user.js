@@ -38,7 +38,7 @@ const getUsers = async (req, res) => {
     const allUsers = await Users.find();
     for (let item of allUsers) {
         if (item.isAdmin === false) {
-            users.push(formatInfo(item));
+            await users.push(formatInfo(item));
         }
     }
     res.status(200).json(users);
