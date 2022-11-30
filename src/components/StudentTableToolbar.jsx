@@ -34,7 +34,7 @@ function StudentTableToolbar(props) {
                 </Typography>
             ) : (
                 <OutlinedInput
-                    sx={{ width: '30ch' }}
+                    sx={{ width: '60ch' }}
                     value={filterName}
                     onChange={onFilterName}
                     placeholder="Search user..."

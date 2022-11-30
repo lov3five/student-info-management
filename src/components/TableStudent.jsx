@@ -218,11 +218,9 @@ export default function StudentTable() {
                                                 <strong>&quot;{filterName}&quot;</strong>.
                                                 <br /> Try checking for typos or using complete words.
                                             </Typography>
-
                                         </TableCell>
                                     </TableRow>
                                 </TableBody>
-
                             )}
                         </Table>
                     </TableContainer>
