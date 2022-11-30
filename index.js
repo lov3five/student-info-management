@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 // Cross domain
-app.use(cors(corsOptions));
+/* app.use(cors(corsOptions)); */
 
 // Connect to MongoDB
 DB_MONGO.connect();
