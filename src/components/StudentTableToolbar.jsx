@@ -1,10 +1,10 @@
-import { Delete, FilterList } from "@mui/icons-material";
-import { alpha, IconButton, Toolbar, Tooltip, Typography } from "@mui/material";
+import { Delete, FilterList, Search } from "@mui/icons-material";
+import { alpha, IconButton, InputAdornment, OutlinedInput, Toolbar, Tooltip, Typography } from "@mui/material";
 import { PropTypes } from 'prop-types';
 
 
 function StudentTableToolbar(props) {
-    const { numSelected } = props;
+    const { numSelected, filterName, onFilterName } = props;
 
     return (
         <Toolbar
@@ -18,6 +18,9 @@ function StudentTableToolbar(props) {
                             theme.palette.action.activatedOpacity
                         ),
                 }),
+                height: 96,
+                display: 'flex',
+                justifyContent: 'space-between',
             }}
         >
             {numSelected > 0 ? (
@@ -30,14 +33,17 @@ function StudentTableToolbar(props) {
                     {numSelected} selected
                 </Typography>
             ) : (
-                <Typography
-                    sx={{ flex: "1 1 100%" }}
-                    variant="h6"
-                    id="tableTitle"
-                    component="div"
-                >
-                    Students
-                </Typography>
+                <OutlinedInput
+                    sx={{ width: '30ch' }}
+                    value={filterName}
+                    onChange={onFilterName}
+                    placeholder="Search user..."
+                    startAdornment={
+                        <InputAdornment position="start">
+                            <Search />
+                        </InputAdornment>
+                    }
+                />
             )}
 
             {numSelected > 0 ? (
@@ -47,7 +53,7 @@ function StudentTableToolbar(props) {
                     </IconButton>
                 </Tooltip>
             ) : (
-                <Tooltip title="Filter list">
+                <Tooltip title="Filter list" >
                     <IconButton>
                         <FilterList />
                     </IconButton>

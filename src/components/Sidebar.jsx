@@ -8,6 +8,7 @@ const Sidebar = () => {
 
   return (
     <Box
+      overflow={'scroll'}
       sx={{
         display: { xs: "none", sm: "block" },
         flex: {

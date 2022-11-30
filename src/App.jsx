@@ -15,7 +15,7 @@ import Footer from "./components/Footer";
 
 function App() {
   return (
-      <Box>
+      <Box overflow={"hidden"}>
         <Header />
         <Stack direction="row" justifyContent="space-between">
           <Sidebar />

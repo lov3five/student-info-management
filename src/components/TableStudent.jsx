@@ -12,7 +12,8 @@ import StudentTableHead from './StudentTableHead';
 
 //Fake data
 import STUDENT_LIST from '../_mock/student';
-import { Avatar, Checkbox, Container, Paper, Stack } from "@mui/material";
+import { Avatar, Button, Checkbox, Container, Paper, Stack, Typography } from "@mui/material";
+import { Add } from "@mui/icons-material";
 
 
 const rows = STUDENT_LIST;
@@ -112,15 +113,29 @@ export default function StudentTable() {
     const emptyRows =
         page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
+    const filteredStudents = stableSort(STUDENT_LIST, getComparator(order, orderBy), filterName);
+
+    const isNotFound = !filteredStudents.length && !!filterName;
+
+
     return (
         <Container>
-            <Box sx={{ width: "100%" }}>
+            <Box sx={{ width: "100%" }} >
+                <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5} mt={2}>
+                    <Typography variant="h5" gutterBottom>
+                        Students
+                    </Typography>
+                    <Button variant="contained" startIcon={<Add />}>
+                        New Student
+                    </Button>
+                </Stack>
                 <Paper sx={{ width: "100%", mb: 2 }}>
                     <StudentTableToolbar numSelected={selected.length} filterName={filterName} onFilterName={handleFilterByName} />
                     <TableContainer sx={{ minWidth: 800 }}>
                         <Table
                             sx={{ minWidth: 750 }}
                             aria-labelledby="tableTitle"
+                            stickyHeader aria-label="sticky table"
                         >
                             <StudentTableHead
                                 numSelected={selected.length}
@@ -139,7 +154,7 @@ export default function StudentTable() {
                                         const { id, avatarUrl, name, email } = row;
                                         const isItemSelected = isSelected(id);
                                         const labelId = `enhanced-table-checkbox-${index}`;
-                                        
+
                                         return (
                                             <TableRow
                                                 hover
@@ -148,8 +163,8 @@ export default function StudentTable() {
                                                 aria-checked={isItemSelected}
                                                 tabIndex={-1}
                                                 key={id}
-                                                selected = { isItemSelected }
-                                        >
+                                                selected={isItemSelected}
+                                            >
                                                 <TableCell padding="checkbox">
                                                     <Checkbox
                                                         color="primary"
@@ -167,36 +182,60 @@ export default function StudentTable() {
                                                 >
                                                     {id}
                                                 </TableCell>
-                                                <TableCell align="right">
+                                                <TableCell align="left">
                                                     <Stack direction="row" alignItems="center" spacing={2}>
                                                         <Avatar alt={name} src={avatarUrl} />
                                                     </Stack>
                                                 </TableCell>
-                                                <TableCell align="right">{name}</TableCell>
-                                                <TableCell align="right">{email}</TableCell>
+                                                <TableCell align="left">{name}</TableCell>
+                                                <TableCell align="left">{email}</TableCell>
                                             </TableRow>
-                            );
+                                        );
                                     })}
-                            {emptyRows > 0 && (
-                                <TableRow
-                                >
-                                    <TableCell colSpan={6} />
-                                </TableRow>
+                                {emptyRows > 0 && (
+                                    <TableRow
+                                    >
+                                        <TableCell colSpan={6} />
+                                    </TableRow>
+                                )}
+                            </TableBody>
+
+                            {isNotFound && (
+                                <TableBody>
+                                    <TableRow>
+                                        <TableCell align="center" colSpan={6} sx={{ py: 3 }}>
+                                            <Paper
+                                                sx={{
+                                                    textAlign: 'center',
+                                                }}
+                                            >
+                                                <Typography variant="h6" paragraph>
+                                                    Not found
+                                                </Typography>
+
+                                                <Typography variant="body2">
+                                                    No results found for &nbsp;
+                                                    <strong>&quot;{filterName}&quot;</strong>.
+                                                    <br /> Try checking for typos or using complete words.
+                                                </Typography>
+                                            </Paper>
+                                        </TableCell>
+                                    </TableRow>
+                                </TableBody>
                             )}
-                        </TableBody>
-                    </Table>
-                </TableContainer>
-                <TablePagination
-                    rowsPerPageOptions={[5, 10, 25]}
-                    component="div"
-                    count={rows.length}
-                    rowsPerPage={rowsPerPage}
-                    page={page}
-                    onPageChange={handleChangePage}
-                    onRowsPerPageChange={handleChangeRowsPerPage}
-                />
-            </Paper>
-        </Box>
+                        </Table>
+                    </TableContainer>
+                    <TablePagination
+                        rowsPerPageOptions={[5, 10, 25]}
+                        component="div"
+                        count={rows.length}
+                        rowsPerPage={rowsPerPage}
+                        page={page}
+                        onPageChange={handleChangePage}
+                        onRowsPerPageChange={handleChangeRowsPerPage}
+                    />
+                </Paper>
+            </Box>
         </Container >
     );
 }
