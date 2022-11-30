@@ -13,18 +13,16 @@ import Monitor from "./components/Monitor";
 import Footer from "./components/Footer";
 
 
-
-
 function App() {
   return (
-    <Box>
-      <Header />
-      <Stack direction="row" justifyContent="space-between">
-        <Sidebar />
-        <Monitor />
-      </Stack>
-      <Footer sx={{marginTop: "10px", backgroundColor: "aqua"}}/>
-    </Box>
+      <Box>
+        <Header />
+        <Stack direction="row" justifyContent="space-between">
+          <Sidebar />
+          <Monitor />
+        </Stack>
+        <Footer sx={{ backgroundColor: "aqua" }} />
+      </Box>
   )
 }
 
