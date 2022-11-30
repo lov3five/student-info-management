@@ -10,7 +10,7 @@ const DB_MONGO = require('./app/config/db.config');
 const PORT = _CONST.PORT;
 
 var corsOptions = {
-    origin: "https://student-info-management.vercel.app/"
+    origin: "https://student-info-management-git-back-end-lov3five.vercel.app/"
 }
 
 // Theo dõi log GET, POST, PUT,...
