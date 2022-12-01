@@ -12,10 +12,15 @@ import StudentTableHead from './StudentTableHead';
 
 //Fake data
 import STUDENT_LIST from '../_mock/student';
-import { Avatar, Button, Checkbox, Container, Paper, Stack, Typography } from "@mui/material";
-import { Add } from "@mui/icons-material";
+import { Avatar, Button, Checkbox, Container, Paper, Stack, Typography, styled, IconButton } from "@mui/material";
+import { Add, Delete, Edit } from "@mui/icons-material";
 import { filter } from 'lodash'
 
+const Icons = styled(Box)(({ theme }) => ({
+    display: "flex",
+    gap: "12px",
+    alignItems: "center",
+}));
 
 
 function descendingComparator(a, b, orderBy) {
@@ -135,7 +140,7 @@ export default function StudentTable() {
                 </Stack>
                 <Paper sx={{ width: "100%", mb: 2 }}>
                     <StudentTableToolbar numSelected={selected.length} filterName={filterName} onFilterName={handleFilterByName} />
-                    <TableContainer sx={{ minWidth: 800 }}>
+                    <TableContainer sx={{ minWidth: 800 }}  >
                         <Table
                             sx={{ minWidth: 750 }}
                             aria-labelledby="tableTitle"
@@ -162,16 +167,17 @@ export default function StudentTable() {
                                         return (
                                             <TableRow
                                                 hover
-                                                onClick={(event) => handleClick(event, id)}
+
                                                 role="checkbox"
-                                                aria-checked={isItemSelected}
+                                                /*  aria-checked={isItemSelected} */
                                                 tabIndex={-1}
                                                 key={id}
-                                                selected={isItemSelected}
+                                            /* selected={isItemSelected} */
                                             >
                                                 <TableCell padding="checkbox">
                                                     <Checkbox
                                                         color="primary"
+                                                        onClick={(event) => handleClick(event, id)}
                                                         checked={isItemSelected}
                                                         inputProps={{
                                                             "aria-labelledby": labelId,
@@ -193,6 +199,18 @@ export default function StudentTable() {
                                                 </TableCell>
                                                 <TableCell align="left">{name}</TableCell>
                                                 <TableCell align="left">{email}</TableCell>
+                                                <TableCell>
+                                                    <Icons>
+                                                        <Button startIcon={<Edit />} color="success">
+                                                            Edit
+                                                        </Button>
+
+                                                        <Button startIcon={<Delete />} color="error">
+                                                            Delete
+                                                        </Button>
+                                                    </Icons>
+
+                                                </TableCell>
                                             </TableRow>
                                         );
                                     })}
@@ -218,6 +236,7 @@ export default function StudentTable() {
                                                 <strong>&quot;{filterName}&quot;</strong>.
                                                 <br /> Try checking for typos or using complete words.
                                             </Typography>
+
                                         </TableCell>
                                     </TableRow>
                                 </TableBody>

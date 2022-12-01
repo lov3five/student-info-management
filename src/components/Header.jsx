@@ -51,7 +51,7 @@ const Header = () => {
     return (
         <Box >
             <AppBar
-                position="stick"
+                position="sticky"
                 sx={{ background: "linear-gradient(45deg, #007FFF, #0059D2)", top: 0, zIndex: 999 }}
             >
                 <StyledToolbar>

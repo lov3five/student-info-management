@@ -57,8 +57,8 @@ function StudentTableHead(props) {
     };
 
     return (
-        <TableHead sx={{backgroundColor: "gray"}}>
-            <TableRow>
+        <TableHead >
+            <TableRow sx={{backgroundColor: "gray"}}>
                 <TableCell padding="checkbox">
                     <Checkbox
                         color="primary"
