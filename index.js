@@ -17,12 +17,6 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-app.use((res, req, next) => {
-    res.setHeader("Access-Control-Allow-Origin", '*');
-    res.setHeader("Access-Control-Allow-Methods", '*');
-    res.setHeader("Access-Control-Allow-Headers", '*');
-})
-
 // Cross domain
 app.use(cors());
 
@@ -35,7 +29,7 @@ app.use(express.static("public", {
 /* app.set('view engine', 'ejs') */
 
 app.get('/', (req, res) => {
-    res.send('Welcome to Naker UI ^^');
+    res.send('Welcome to homepage');
 });
 
 // Router hh
