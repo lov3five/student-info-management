@@ -32,9 +32,9 @@ const editAuthUser = async (req, res) => {
         res.status(500).json(error);
     }
 }
-
+const users = [];
 const getUsers = async (req, res) => {
-    const users = [];
+    
     const allUsers = await Users.find();
     for (let item of allUsers) {
         if (item.isAdmin === false) {
