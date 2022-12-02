@@ -4,7 +4,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const _CONST = require('./app/config/constant');
 const morgan = require('morgan');
-require ('dotenv').config();
+require('dotenv').config();
 const DB_MONGO = require('./app/config/db.config');
 
 const PORT = _CONST.PORT;
@@ -17,8 +17,13 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-// Cross domain
+app.use((res, req, next) => {
+    res.setHeader("Access-Control-Allow-Origin", '*');
+    res.setHeader("Access-Control-Allow-Methods", '*');
+    res.setHeader("Access-Control-Allow-Headers", '*');
+})
 
+// Cross domain
 app.use(cors());
 
 // Connect to MongoDB
