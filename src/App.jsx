@@ -11,10 +11,19 @@ import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import Monitor from "./components/Monitor";
 import Footer from "./components/Footer";
-import AddStudent from "./components/AddStudent";
 
+// API
+import axios from "axios";
+
+const apiUser = axios.create({
+  baseURL: "http://localhost:5000/api/users/"
+})
 
 function App() {
+  apiUser.get("/").then(res => {
+    console.log(res.data);
+  })
+
   return (
     <Box overflow={"hidden"}>
       <Header />
@@ -23,8 +32,6 @@ function App() {
         <Monitor />
       </Stack>
       <Footer sx={{ backgroundColor: "aqua" }} />
-      hehe
-      <AddStudent />
     </Box>
 
 

@@ -1,7 +1,6 @@
 import React from 'react'
 import { Box } from '@mui/material';
-import TableStudent from './TableStudent.jsx';
-
+import TableStudent from '../pages/TableStudent';
 
 /* const TABLE_HEADER = [
   { id: 'id', label: '#', alignRight: false },
@@ -15,7 +14,7 @@ import TableStudent from './TableStudent.jsx';
 const Monitor = () => {
   return (
     <Box sx={{ flex: { xs: 5, sm: 3, md: 4, lg: 6, xl: 6 }, borderLeft: "1px dashed gray" }} >
-      <TableStudent />
+        <TableStudent/>
     </ Box>
   )
 }

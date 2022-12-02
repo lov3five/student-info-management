@@ -3,6 +3,7 @@ import React from "react";
 import { Box, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import { BarChart, Layers, People } from "@mui/icons-material";
+import {Link,  Outlet} from "react-router-dom";
 
 const Sidebar = () => {
 
@@ -18,31 +19,45 @@ const Sidebar = () => {
         },
       }}
     >
-      <ListItemButton sx={{ borderRadius: "10px" }} >
-        <ListItemIcon>
-          <DashboardIcon />
-        </ListItemIcon>
-        <ListItemText primary="Dashboard" />
-      </ListItemButton>
-      <ListItemButton sx={{ borderRadius: "10px" }} >
-        <ListItemIcon>
-          <People />
-        </ListItemIcon>
-        <ListItemText primary="Students" />
-      </ListItemButton>
-      <ListItemButton sx={{ borderRadius: "10px" }} >
-        <ListItemIcon>
-          <BarChart />
-        </ListItemIcon>
-        <ListItemText primary="Reports" />
-      </ListItemButton>
-      <ListItemButton sx={{ borderRadius: "10px" }} >
-        <ListItemIcon>
-          <Layers />
-        </ListItemIcon>
-        <ListItemText primary="Integrations" />
-      </ListItemButton>
+      <Link to="/dashboard/app" underline="none">
+        <ListItemButton sx={{ borderRadius: "10px" }} >
+          <ListItemIcon>
+            <DashboardIcon />
+          </ListItemIcon>
+          <ListItemText primary="Dashboard" />
+        </ListItemButton>
+      </Link> 
+
+      <Link to="/dashboard/student" underline="none" color="primary">
+        <ListItemButton sx={{ borderRadius: "10px" }} >
+          <ListItemIcon>
+            <People />
+          </ListItemIcon>
+          <ListItemText primary="Students" />
+        </ListItemButton>
+      </Link>
+
+      <Link to="/dashboard/report" underline="none" color="primary">
+        <ListItemButton sx={{ borderRadius: "10px" }} >
+          <ListItemIcon>
+            <BarChart />
+          </ListItemIcon>
+          <ListItemText primary="Reports" />
+        </ListItemButton>
+      </Link>
+
+      <Link to="/dashboard/inte" underline="none" color="primary">
+        <ListItemButton sx={{ borderRadius: "10px" }} >
+          <ListItemIcon>
+            <Layers />
+          </ListItemIcon>
+          <ListItemText primary="Integrations" />
+        </ListItemButton>
+      </Link>
+
+      <Outlet/>
     </Box>
+    
   );
 };
 

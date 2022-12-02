@@ -7,12 +7,12 @@ import TableContainer from "@mui/material/TableContainer";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 
-import StudentTableToolbar from './StudentTableToolbar';
-import StudentTableHead from './StudentTableHead';
+import StudentTableToolbar from '../components/StudentTableToolbar';
+import StudentTableHead from '../components/StudentTableHead';
 
 //Fake data
 import STUDENT_LIST from '../_mock/student';
-import { Avatar, Button, Checkbox, Container, Paper, Stack, Typography, styled, IconButton } from "@mui/material";
+import { Avatar, Button, Checkbox, Container, Paper, Stack, Typography, styled} from "@mui/material";
 import { Add, Delete, Edit } from "@mui/icons-material";
 import { filter } from 'lodash'
 
@@ -163,11 +163,9 @@ export default function StudentTable() {
                                         const { id, avatarUrl, name, email } = row;
                                         const isItemSelected = isSelected(id);
                                         const labelId = `enhanced-table-checkbox-${index}`;
-
                                         return (
                                             <TableRow
                                                 hover
-
                                                 role="checkbox"
                                                 /*  aria-checked={isItemSelected} */
                                                 tabIndex={-1}
