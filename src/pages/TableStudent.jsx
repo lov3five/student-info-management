@@ -58,7 +58,7 @@ function stableSort(array, comparator, query) {
     }
     return stabilizedThis.map((el) => el[0]);
 }
-let students
+var students
 api.get('/users').then(res => {
     students = res.data
 })
@@ -152,22 +152,24 @@ export default function TableStudent() {
 
                         </TableHead>
                         <TableBody>
-                            {students.map((row) => {
-                                const { firstName, lastName, email, gender, address, city } = row;
-                                return (
-                                    <TableRow
-                                        key={email}
-                                        sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                                    >
-                                        <TableCell align="right">{firstName}</TableCell>
-                                        <TableCell align="right">{lastName}</TableCell>
-                                        <TableCell align="right">{email}</TableCell>
-                                        <TableCell align="right">{gender}</TableCell>
-                                        <TableCell align="right">{address}</TableCell>
-                                        <TableCell align="right">{city}</TableCell>
-
-                                    </TableRow>)
-                            })}
+                            {
+                                students.map((row) => {
+                                    const { firstName, lastName, email, gender, address, city } = row;
+                                    return (
+                                        <TableRow
+                                            key={email}
+                                            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                        >
+                                            <TableCell align="right">{firstName}</TableCell>
+                                            <TableCell align="right">{lastName}</TableCell>
+                                            <TableCell align="right">{email}</TableCell>
+                                            <TableCell align="right">{gender}</TableCell>
+                                            <TableCell align="right">{address}</TableCell>
+                                            <TableCell align="right">{city}</TableCell>
+                                        </TableRow>
+                                    );
+                                })
+                            }
                         </TableBody>
                     </Table>
                 </TableContainer>
