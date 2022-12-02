@@ -15,16 +15,21 @@ import Footer from "./components/Footer";
 // API
 import axios from "axios";
 
-const apiUser = axios.create({
-  baseURL: "https://student-info-management-git-back-end-lov3five.vercel.app/api/users/"
+const api = axios.create({
+  baseURL: "https://student-info-management-git-back-end-lov3five.vercel.app/api/"
 })
 
 function App() {
-  apiUser.get("/test").then(res => {
+  //router of backend
+  api.get("/users/test").then(res => {
     console.log(res.data);
   })
 
-  apiUser.get("/").then(res => {
+  api.get("/users").then(res => {
+    console.log(res.data);
+  })
+
+  api.get("/auth").then(res => {
     console.log(res.data);
   })
 
