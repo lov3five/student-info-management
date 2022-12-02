@@ -16,7 +16,13 @@ import { Avatar, Button, Checkbox, Container, Paper, Stack, Typography, styled, 
 import { Add, Delete, Edit } from "@mui/icons-material";
 import { filter } from 'lodash'
 
-import { default as api } from '../api/api';
+import api from '../api/api';
+
+let students = []
+api.get("/users").then(res => {
+    students = res.data;
+})
+
 
 const Icons = styled(Box)(({ theme }) => ({
     display: "flex",
@@ -58,14 +64,9 @@ function stableSort(array, comparator, query) {
     }
     return stabilizedThis.map((el) => el[0]);
 }
-var students
-api.get('/users').then(res => {
-    students = res.data
-})
 
 
 export default function TableStudent() {
-
     const [order, setOrder] = React.useState("asc");
     const [orderBy, setOrderBy] = React.useState("calories");
     const [selected, setSelected] = React.useState([]);
@@ -300,3 +301,5 @@ export default function TableStudent() {
         </Container >
     );
 }
+
+
