@@ -1,14 +1,21 @@
 const formatInfo = (input) => {
+    const {
+        firstName,
+        lastName,
+        email,
+        gender,
+        address,
+        city,
+    } = input;
     return {
-        firstName: input.firstName,
-        lastName: input.lastName,
-        email: input.email,
-        gender: input.gender,
-        address: input.address,
-        city: input.city,
+        firstName,
+        lastName,
+        email,
+        email,
+        gender,
+        address,
+        city,
     }
 }
 
 module.exports = formatInfo;
-
-    
