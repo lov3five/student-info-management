@@ -12,9 +12,11 @@ import StudentTableHead from '../components/StudentTableHead';
 
 //Fake data
 import STUDENT_LIST from '../_mock/student';
-import { Avatar, Button, Checkbox, Container, Paper, Stack, Typography, styled} from "@mui/material";
+import { Avatar, Button, Checkbox, Container, Paper, Stack, Typography, styled, TableHead } from "@mui/material";
 import { Add, Delete, Edit } from "@mui/icons-material";
 import { filter } from 'lodash'
+
+import { default as api } from '../api/api';
 
 const Icons = styled(Box)(({ theme }) => ({
     display: "flex",
@@ -56,9 +58,14 @@ function stableSort(array, comparator, query) {
     }
     return stabilizedThis.map((el) => el[0]);
 }
+let students
+api.get('/users').then(res => {
+    students = res.data
+})
 
 
-export default function StudentTable() {
+export default function TableStudent() {
+
     const [order, setOrder] = React.useState("asc");
     const [orderBy, setOrderBy] = React.useState("calories");
     const [selected, setSelected] = React.useState([]);
@@ -129,6 +136,42 @@ export default function StudentTable() {
 
     return (
         <Container>
+            <Box>
+                <TableContainer component={Paper}>
+                    <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                        <TableHead>
+                            <TableRow>
+                                <TableCell align="right">Firstname</TableCell>
+                                <TableCell align="right">Lastname</TableCell>
+                                <TableCell align="right">Email</TableCell>
+                                <TableCell align="right">Gender</TableCell>
+                                <TableCell align="right">Address</TableCell>
+                                <TableCell align="right">City</TableCell>
+
+                            </TableRow>
+
+                        </TableHead>
+                        <TableBody>
+                            {students.map((row) => {
+                                const { firstName, lastName, email, gender, address, city } = row;
+                                return (
+                                    <TableRow
+                                        key={email}
+                                        sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                    >
+                                        <TableCell align="right">{firstName}</TableCell>
+                                        <TableCell align="right">{lastName}</TableCell>
+                                        <TableCell align="right">{email}</TableCell>
+                                        <TableCell align="right">{gender}</TableCell>
+                                        <TableCell align="right">{address}</TableCell>
+                                        <TableCell align="right">{city}</TableCell>
+
+                                    </TableRow>)
+                            })}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+            </Box>
             <Box sx={{ width: "100%" }} >
                 <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5} mt={2}>
                     <Typography variant="h5" gutterBottom>
