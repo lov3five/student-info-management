@@ -16,11 +16,11 @@ import Footer from "./components/Footer";
 import axios from "axios";
 
 const apiUser = axios.create({
-  baseURL: "http://localhost:5000/api/users/"
+  baseURL: "https://student-info-management-git-back-end-lov3five.vercel.app/api/users"
 })
 
 function App() {
-  apiUser.get("/").then(res => {
+  apiUser.get("/test").then(res => {
     console.log(res.data);
   })
 
