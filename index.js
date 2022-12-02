@@ -9,9 +9,6 @@ const DB_MONGO = require('./app/config/db.config');
 
 const PORT = _CONST.PORT;
 
-var corsOptions = {
-    origin: "https://student-info-management-git-back-end-lov3five.vercel.app/"
-}
 
 // Theo dõi log GET, POST, PUT,...
 app.use(morgan('combined'));
@@ -21,6 +18,11 @@ app.use(bodyParser.urlencoded({
 }));
 
 // Cross domain
+const corsOptions ={
+    origin:'http://localhost:3000', 
+    credentials:true,            //access-control-allow-credentials:true
+    optionSuccessStatus:200
+}
 app.use(cors(corsOptions));
 
 // Connect to MongoDB

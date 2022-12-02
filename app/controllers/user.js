@@ -34,30 +34,15 @@ const editAuthUser = async (req, res) => {
 }
 
 const getUsers = async (req, res) => {
-    let users = [{
-            id: "1",
-            name: "Tran Thanh Luong"
-        },
-        {
-            id: "2",
-            name: "Tran Thanh Luong"
-        },
-        {
-            id: "3",
-            name: "Tran Thanh Luong"
-        },
-        {
-            id: "4",
-            name: "Tran Thanh Luong"
-        }
-    ];
-    /* const allUsers = await Users.find();
+    const users = [];
+    const allUsers = await Users.find();
     for (let item of allUsers) {
         if (item.isAdmin === false) {
             await users.push(formatInfo(item));
         }
-    } */
-    res.status(200).json(users);
+    }
+
+    res.status(200).json(users)
 };
 
 
