@@ -16,13 +16,6 @@ import { Avatar, Button, Checkbox, Container, Paper, Stack, Typography, styled, 
 import { Add, Delete, Edit } from "@mui/icons-material";
 import { filter } from 'lodash'
 
-import api from '../api/api';
-
-let students = []
-api.get("/users").then(res => {
-    students = res.data;
-})
-
 
 const Icons = styled(Box)(({ theme }) => ({
     display: "flex",
@@ -74,6 +67,7 @@ export default function TableStudent() {
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
     const [filterName, setFilterName] = React.useState('');
 
+
     const handleRequestSort = (event, property) => {
         const isAsc = orderBy === property && order === "asc";
         setOrder(isAsc ? "desc" : "asc");
@@ -123,7 +117,6 @@ export default function TableStudent() {
         setFilterName(event.target.value);
     };
 
-
     const isSelected = (name) => selected.indexOf(name) !== -1;
 
     // Avoid a layout jump when reaching the last page with empty rows.
@@ -152,7 +145,7 @@ export default function TableStudent() {
                             </TableRow>
 
                         </TableHead>
-                        <TableBody>
+                        {/*  <TableBody>
                             {
                                 students.map((row) => {
                                     const { firstName, lastName, email, gender, address, city } = row;
@@ -171,7 +164,7 @@ export default function TableStudent() {
                                     );
                                 })
                             }
-                        </TableBody>
+                        </TableBody> */}
                     </Table>
                 </TableContainer>
             </Box>
